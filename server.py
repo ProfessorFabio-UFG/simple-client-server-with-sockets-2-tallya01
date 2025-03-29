@@ -21,6 +21,8 @@ def get_days_until_bday(date):
 
 def is_leap(year):
   year = int(year)
+  if year < 1:
+    raise ValueError('O ano não pode ser negativo')
   return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 def add_days_to_date(date_str, days):
@@ -41,15 +43,18 @@ while True:                # forever
 
   return_data = 'Função não encontrada'
 
-  if function == 'aniversario':
-    return_data = f'Faltam {get_days_until_bday(payload)} dias para o seu aniversário!!!'
-  if function == 'bissexto':
-    return_data = f'O ano {payload}{'' if is_leap(payload) else 'não'} é bissexto'
-  if function == 'adicionar':
-    splitted_payload = payload.split(',')
-    date = splitted_payload[0]
-    days = int(splitted_payload[1])
-    return_data = f'Após {days} dias a partir de {date} será dia {add_days_to_date(date, days)}'
+  try:
+    if function == 'aniversario':
+      return_data = f'Faltam {get_days_until_bday(payload)} dias para o seu aniversário!!!'
+    if function == 'bissexto':
+      return_data = f'O ano {payload}{'' if is_leap(payload) else 'não'} é bissexto'
+    if function == 'adicionar':
+      splitted_payload = payload.split(',')
+      date = splitted_payload[0]
+      days = int(splitted_payload[1])
+      return_data = f'Após {days} dias a partir de {date} será dia {add_days_to_date(date, days)}'
+  except Exception as error:
+    return_data = f'Erro: {repr(error)}'
 
   conn.send(str.encode(return_data+"*")) # return sent data plus an "*"
 conn.close()               # close the connection

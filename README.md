@@ -1,10 +1,11 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/qjXMgXsV)
 # ClientServerBasics (2.0)
-Starter code for the basic client-server assignment
 
+## Funções disponíveis
+- `aniversario`: esta função recebe a data do seu aniversário (ou qualquer outra data no formato DD/MM), e retorna quantos dias faltam para o aniversário, isto é, para a próxima ocorrência dessa data.
+- `bissexto`: esta função recebe um ano e identifica se o ano enviado é bissexto
+- `adiciona`: esta função recebe uma data no formato DD/MM/AAAA e um número inteiro, e calcula a data adicionada da quantidade de dias. os parâmetros devem ser separados por vírgula. Por exemplo, `01/04/2025,10` adiciona 10 dias à data 01/04/2025
 
-Este template corresponde ao exemplo da Fig. 2.3 do livro. O exercício consiste em acrescentar funcionalidade ao servidor para torná-lo mais útil. Essa funcionalidade deve ser acessível aos clientes. Por exemplo, o servidor pode ser uma espécie de calculadora remota. O cliente passa dois valores numéricos, juntamente com o nome de uma operação (ex.: add, subtract, multiply, divide) e o servidor executa a operação respectiva e retorna seu resultado para o cliente. Você pode implementar outro tipo de servidor (diferente da calculadora). O imporante é que ele ofereça pelo menos três operações diferentes que os clientes podem utilizar remotamente, passando dados para serem processados e recebendo o resultado desse processamento como resposta.
+## Funcionamento do cliente
+O cliente irá sempre solicitar uma função e seus parâmetros de entrada. 
 
-Tarefa individual.
-
-Incluir um Readme descritivo do sistema implementado.
+Caso a função não exista ou ocorra algum erro, o servidor retornará a mensagem correspondente.
